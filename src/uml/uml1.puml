@@ -1,0 +1,61 @@
+@startuml
+
+class User {
+-login
+-password
++login()
++callAdmin()
++workOnComputer()
++makePrintRequest()
+}
+
+class AdvancedUser {
+    advancedSkillsList
+    doAdvancedJob()
+}
+
+class Administrator {
+    beardColor
+    superPowerList
+    fixServer()
+    fixPrinter()
+}
+
+class Computer {
+OS
+sendPrintRequest()
+}
+
+class Client {
+    connectToServer()
+}
+
+class Server {
+    goDown()
+}
+
+class PrintServer {
+printingQueue
+addToPrintingQueue()
+sendForPrint()
+}
+
+class Printer {
+model
+type
+print()
+}
+
+Client -- Server : connected to
+Administrator --> Printer : fixing
+User <|-- AdvancedUser
+AdvancedUser <|-- Administrator
+Computer <|-- Server
+Computer <|-- Client
+Server <|-- PrintServer
+Printer -- PrintServer : connected to
+Server --> PrintServer : sends print requests 
+User --> Client : works on
+Administrator --> Server : administrating
+User --> Administrator : calls
+@enduml
