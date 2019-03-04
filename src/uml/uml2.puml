@@ -1,0 +1,10 @@
+@startuml
+
+User -> Computer: makePrintRequest()
+Computer -> Server : sendPrintRequest()
+Server -> PrintServer : addToPrintingQueue()
+PrintServer -> Printer : sendForPrint()
+Printer -> Document : print()
+User -> Document : takeDocument()
+
+@enduml

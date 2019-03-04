@@ -7,55 +7,56 @@ class User {
 +callAdmin()
 +workOnComputer()
 +makePrintRequest()
++takeDocument()
 }
 
 class AdvancedUser {
-    advancedSkillsList
-    doAdvancedJob()
+    -advancedSkillsList
+    +doAdvancedJob()
 }
 
 class Administrator {
-    beardColor
-    superPowerList
-    fixServer()
-    fixPrinter()
+    -beardColor
+    -superPowerList
+    +fixServer()
+    +fixPrinter()
 }
 
 class Computer {
-OS
-sendPrintRequest()
+    -OS
+    +sendPrintRequest()
 }
 
 class Client {
-    connectToServer()
+    +connectToServer()
 }
 
 class Server {
-    goDown()
+    +goDown()
+    +addToPrintingQueue()
 }
 
 class PrintServer {
-printingQueue
-addToPrintingQueue()
-sendForPrint()
+    -printingQueue
+    +sendForPrint()
 }
 
 class Printer {
-model
-type
-print()
+    -model
+    -type
+    +print()
 }
 
-Client -- Server : connected to
-Administrator --> Printer : fixing
+Client "1..*" -- "1..*" Server : connected to
+Administrator "1..*" --> "1..*" Printer : fixing
 User <|-- AdvancedUser
 AdvancedUser <|-- Administrator
 Computer <|-- Server
 Computer <|-- Client
-Server <|-- PrintServer
-Printer -- PrintServer : connected to
-Server --> PrintServer : sends print requests 
-User --> Client : works on
-Administrator --> Server : administrating
-User --> Administrator : calls
+Printer "0..*" -- "1" PrintServer : connected to
+Server "1" --> "1" PrintServer : sends print requests
+User  --> Client : works on
+Administrator "1..*" --> "1..*" Server : administrating
+User "1" --> "1" Administrator : calls
+Printer --> Document : prints
 @enduml

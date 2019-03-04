@@ -1,0 +1,10 @@
+@startuml
+[*] -> Working : start
+Working --> Waiting : make print request
+Waiting --> Check : printing
+Check --> TakingDocument : is correct
+Check --> WaitingAdmin : printer is broken or not connected
+WaitingAdmin --> Waiting : repeat print request
+TakingDocument --> Working
+}
+@enduml
