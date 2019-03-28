@@ -1,6 +1,8 @@
 package rmi;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable {
 
     private MathOperations operation;
     private double op1;

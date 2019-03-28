@@ -8,16 +8,17 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class Server {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException, AlreadyBoundException, InterruptedException {
         Registry registry;
-        try {
-            registry = LocateRegistry.createRegistry(1099);
-            Remote stub = UnicastRemoteObject.exportObject(new RemoteOperationExecutorImpl(), 0);
-            registry.bind("calc", stub);
 
-        } catch (RemoteException | AlreadyBoundException e) {
-            e.printStackTrace();
+        registry = LocateRegistry.createRegistry(2099);
+        RemoteOperationExecutor executor = new RemoteOperationExecutorImpl();
+        Remote stub = UnicastRemoteObject.exportObject(executor, 0);
+        registry.bind("calc", stub);
+        while (true) {
+            Thread.sleep(Integer.MAX_VALUE);
         }
+
 
     }
 
