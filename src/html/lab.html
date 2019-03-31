@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
+    <meta charset="UTF-8" />
     <title>Employees</title>
-</head>
-<body>
-
-</body>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <form>
+      <P>
+        <input
+          type="text"
+          name="empnum"
+          id="empnum"
+          placeholder="Номер сотрудника"
+        />
+        <input type="button" value="Найти" />
+      </P>
+      <p>
+        <input
+          type="text"
+          name="empname"
+          id="empname"
+          placeholder="Имя сотрудника"
+          onfocus="onNameFocus()"
+          onblur="onNameBlur()"          
+        />
+        <input type="button" value="Найти" onclick="sendText()"/>
+      </p>
+      <p>
+        <input type="button" value="Показать всех" onclick="restoreData()" />
+      </p>
+      <p>
+        <a target="_blank" href="newemp.html">Новый сотрудник</a>
+      </p>
+      <table id="emptable">
+        <tr>
+          <th></th>
+          <th>Номер сотрудника</th>
+          <th>Имя сотрудника</th>
+          <th>Должность сотрудника</th>
+          <th>Дата принятия</th>
+          <th>Отдел</th>
+          <th>Удаление</th>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="check" id="check1" /></td>
+          <td>1</td>
+          <td>Иван Иванов</td>
+          <td>Менеджер</td>
+          <td>12.12.2012</td>
+          <td>Отдел продаж</td>
+          <td>
+            <input
+              type="button"
+              value="Удалить"
+              id="btn1"
+              onclick="deleteConfirm('btn1')"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="check" id="check2" /></td>
+          <td>2</td>
+          <td>Петр Петров</td>
+          <td>Менеджер</td>
+          <td>12.12.2012</td>
+          <td>Отдел продаж</td>
+          <td>
+            <input
+              type="button"
+              value="Удалить"
+              id="btn2"
+              onclick="deleteConfirm('btn2')"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="check" id="check3" /></td>
+          <td>3</td>
+          <td>Сидор Сидоров</td>
+          <td>Менеджер</td>
+          <td>12.12.2012</td>
+          <td>Отдел продаж</td>
+          <td>
+            <input
+              type="button"
+              value="Удалить"
+              id="btn3"
+              onclick="deleteConfirm('btn3')"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="check" id="check4" /></td>
+          <td>4</td>
+          <td>Павел Павлов</td>
+          <td>Менеджер</td>
+          <td>12.12.2012</td>
+          <td>Отдел продаж</td>
+          <td>
+            <input
+              type="button"
+              value="Удалить"
+              id="btn4"
+              onclick="deleteConfirm('btn4')"
+            />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
 </html>
